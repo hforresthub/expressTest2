@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="container">
+		<hr>
+		<h1>List of battles</h1>
+		<hr>
+
+		<div>
+			<div class="row" id="battles">
+
+			</div>
+		</div>
+	</div>
+	<div id="editBattleModal" class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Edit battle</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form id="editForm" method="POST">
+						<div class="form-group">
+							<label for="ISBN">ISBN</label>
+							<input class="form-control" name="isbn" id="isbn">
+						</div>
+
+						<div class="form-group">
+							<label for="Title">Title</label>
+							<input class="form-control" name="title" id="title">
+						</div>
+
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script src="battleInfoList.js"></script>
+</body>
+
+</html>
