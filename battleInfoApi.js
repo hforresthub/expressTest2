@@ -6,7 +6,7 @@ const app = express()
 const port = 3000
 
 //data
-let battles = [{ "isbn": "1", "title": "tesla" }, { "isbn": "2", "title": "teslb" }, { "isbn": "3", "title": "teslc" }]
+let battles = [{ "battleId": "1", "title": "tesla" }, { "battleId": "2", "title": "teslb" }, { "battleId": "3", "title": "teslc" }]
 
 app.use(cors())
 
@@ -21,15 +21,15 @@ app.post('/battle', (req, res) => {
 	battles.push(battle)
 })
 
-app.post('/battle/:isbn', (req, res) => {
-	// Reading isbn from the URL
-	const isbn = req.params.isbn
+app.post('/battle/:battleId', (req, res) => {
+	// Reading battleId from the URL
+	const battleId = req.params.battleId
 	const newbattle = req.body
 
 	// Remove item from the battles array
 	for (let i = 0; i < battles.length; i++) {
 		let battle = battles[i]
-		if (battle.isbn === isbn) {
+		if (battle.battleId === battleId) {
 			battles[i] = newbattle;
 		}
 	}
@@ -41,13 +41,13 @@ app.get('/battles', (req, res) => {
 	res.json(battles)
 })
 
-app.get('/battle/:isbn', (req, res) => {
-	// Reading isbn from the URL
-	const isbn = req.params.isbn
+app.get('/battle/:battleId', (req, res) => {
+	// Reading battleId from the URL
+	const battleId = req.params.battleId
 
-	// Searching battles for the isbn
+	// Searching battles for the battleId
 	for (let battle of battles) {
-		if (battle.isbn === isbn) {
+		if (battle.battleId === battleId) {
 			res.json(battle)
 			return
 		}
@@ -57,13 +57,13 @@ app.get('/battle/:isbn', (req, res) => {
 	res.status(404).send('battle not found');
 })
 
-app.delete('/battle/:isbn', (req, res) => {
-	// Reading isbn from the URL
-	const isbn = req.params.isbn
+app.delete('/battle/:battleId', (req, res) => {
+	// Reading battleId from the URL
+	const battleId = req.params.battleId
 
 	// Remove item from the battles array
 	battles = battles.filter(i => {
-		if (i.isbn !== isbn) {
+		if (i.battleId !== battleId) {
 			return true;
 		}
 		return false;
