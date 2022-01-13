@@ -1,12 +1,26 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const fs = require('fs')
 
 const app = express()
 const port = 3000
+const battleFile = './battleData.json'
 
 //data
 let battles = [{ "battleId": "1", "title": "tesla" }, { "battleId": "2", "title": "teslb" }, { "battleId": "3", "title": "teslc" }]
+
+fs.readFile(battleFile, 'utf8', (err, data) => {
+	if (err) {
+		console.error(err)
+		return
+	}
+	battles = JSON.parse(data)
+	console.log(battles)
+})
+
+
+
 
 app.use(cors())
 
