@@ -19,7 +19,15 @@ fs.readFile(battleFile, 'utf8', (err, data) => {
 	console.log(battles)
 })
 
-
+const updateBattleFile = () => {
+	fs.writeFile(battleFile, JSON.stringify(battles), { flag: 'w+'}, err => {
+		if (err) {
+			console.error(err)
+			return
+		}
+		console.log('updated json file')
+	})
+}
 
 
 app.use(cors())
@@ -33,6 +41,7 @@ app.post('/battle', (req, res) => {
 
 	console.log(battle)
 	battles.push(battle)
+	updateBattleFile()
 })
 
 app.post('/battle/:battleId', (req, res) => {
@@ -47,6 +56,7 @@ app.post('/battle/:battleId', (req, res) => {
 			battles[i] = newbattle;
 		}
 	}
+	updateBattleFile()
 
 	res.send('battle is edited')
 })
@@ -82,6 +92,7 @@ app.delete('/battle/:battleId', (req, res) => {
 		}
 		return false;
 	})
+	updateBattleFile()
 
 	res.send('battle is deleted')
 })

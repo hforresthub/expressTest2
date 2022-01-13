@@ -19,9 +19,6 @@ const setEditModal = (battleId) => {
 	document.getElementById('battleId').value = battleId
 	document.getElementById('title').value = title
 	// document.getElementById('player').value = player
-	// document.getElementById('publisher').value = publisher
-	// document.getElementById('publish_date').value = publish_date
-	// document.getElementById('numOfPages').value = numOfPages
 
 	// Setting up the action url for the battle
 	document.getElementById('editForm').action = `http://localhost:3000/battle/${battleId}`
@@ -47,27 +44,16 @@ const loadbattles = () => {
 
 	for (let battle of battles) {
 		const x = `
-			<div class="col-4">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">${battle.title}</h5>
-						<h6 class="card-subtitle mb-2 text-muted">${battle.battleId}</h6>
-
-						<div>player: ${battle.player}</div>
-						<div>Player troops: ${battle.playerTroops}</div>
-						<div>Enemy troops: ${battle.enemyTroops}</div>
+					<div class="battle">
+						<h2>${battle.title}</h2>
+						<h3>${battle.battleId}</h3>
+						<p>player: ${battle.player}</p>
+						<p>Player troops: ${battle.playerTroops}</p>
+						<p>Enemy troops: ${battle.enemyTroops}</p>
 						<div>Image of battle results: ${battle.imageLink}</div>
-
-						<hr>
-
-						<button type="button" class="btn btn-danger" onClick="deletebattle(${battle.battleId})">Delete</button>
-						<button types="button" class="btn btn-primary" data-toggle="modal"
-							data-target="#editbattleModal" onClick="setEditModal(${battle.battleId})">
-							Edit
-						</button>
+						<button type="button" onClick="deletebattle(${battle.battleId})">Delete</button>
+						<button types="button" onClick="setEditModal(${battle.battleId})">Edit</button>
 					</div>
-				</div>
-			</div>
 		`
 
 		document.getElementById('battles').innerHTML = document.getElementById('battles').innerHTML + x
