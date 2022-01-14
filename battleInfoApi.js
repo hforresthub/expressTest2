@@ -98,5 +98,5 @@ app.delete('/battle/:battleId', (req, res) => {
 })
 
 app.listen(port, () => {
-	console.log(`hi world app is listening on port ${port}`)
+	console.log(`battles app is listening on port ${port}`)
 })

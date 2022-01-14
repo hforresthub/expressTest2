@@ -51,11 +51,8 @@ const loadbattles = () => {
 						<p>Player troops: ${battle.playerTroops}</p>
 						<p>Enemy troops: ${battle.enemyTroops}</p>
 						<div>Image of battle results: ${battle.imageLink}</div>
-						<button type="button" onClick="deletebattle(${battle.battleId})">Delete</button>
-						<button types="button" onClick="setEditModal(${battle.battleId})">Edit</button>
 					</div>
 		`
-
 		document.getElementById('battles').innerHTML = document.getElementById('battles').innerHTML + x
 	}
 }
