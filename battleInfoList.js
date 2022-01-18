@@ -1,8 +1,10 @@
+const site = 'https://battle-test-express.herokuapp.com/'
+
 const setEditModal = (battleId) => {
 	// Get information about the battle using battleId
 	const xhttp = new XMLHttpRequest()
 
-	xhttp.open("GET", `http://localhost:3000/battle/${battleId}`, false)
+	xhttp.open("GET", `${site}${battleId}`, false)
 	xhttp.send()
 
 	const battle = JSON.parse(xhttp.responseText)
@@ -21,13 +23,13 @@ const setEditModal = (battleId) => {
 	// document.getElementById('player').value = player
 
 	// Setting up the action url for the battle
-	document.getElementById('editForm').action = `http://localhost:3000/battle/${battleId}`
+	document.getElementById('editForm').action = `${site}${battleId}`
 }
 
 const deletebattle = (battleId) => {
 	const xhttp = new XMLHttpRequest()
 
-	xhttp.open("DELETE", `http://localhost:3000/battle/${battleId}`, false)
+	xhttp.open("DELETE", `${site}${battleId}`, false)
 	xhttp.send();
 
 	// Reloading the page
@@ -37,7 +39,7 @@ const deletebattle = (battleId) => {
 const loadbattles = () => {
 	const xhttp = new XMLHttpRequest()
 
-	xhttp.open("GET", "http://localhost:3000/battles", false)
+	xhttp.open("GET", `${site}battles`, false)
 	xhttp.send()
 
 	const battles = JSON.parse(xhttp.responseText)
